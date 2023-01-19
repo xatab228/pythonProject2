@@ -36,7 +36,9 @@ def taskWithNewNumber(searchValue):
         temp = str(num)
         subNumFirst = int(temp[0]) + int(temp[2]) + int(temp[4])
         subNumSecond = int(temp[1]) + int(temp[3])
-        summary = str(subNumSecond) + str(subNumFirst)
+        maxNumber = str(max(subNumFirst, subNumSecond))
+        minNumber = str(min(subNumFirst, subNumSecond))
+        summary = minNumber + maxNumber
         if int(summary) == searchValue:
             isComplete = False
         else:
