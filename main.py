@@ -1,5 +1,5 @@
 def taskWithBinaryCode(limit):
-    isComplete = True;
+    isComplete = True
     num = 2
     while isComplete:
         # Transform to binary and delete '0b'
@@ -7,6 +7,12 @@ def taskWithBinaryCode(limit):
         binaryNumber = str(bin(num)[2:])
 
         # First Variant
+
+        # [startPosition:endPosition:step] work only with String and List type !!!
+        # Defaults:
+        # startPosition = 0
+        # endPosition = len(LIST)
+        # step = 1
 
         oneNumberCount = binaryNumber[::2].count('0')
         nullNumberCount = binaryNumber[1::2].count('1')
@@ -30,7 +36,7 @@ def taskWithBinaryCode(limit):
 
 
 def taskWithNewNumber(searchValue):
-    isComplete = True;
+    isComplete = True
     num = 10000
     while num < 100000 and isComplete:
         temp = str(num)
