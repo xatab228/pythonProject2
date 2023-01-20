@@ -14,19 +14,24 @@ def taskWithBinaryCode(limit):
         # endPosition = len(LIST)
         # step = 1
 
-        oneNumberCount = binaryNumber[::2].count('0')
-        nullNumberCount = binaryNumber[1::2].count('1')
+        # index: 0 1 2 3 4 5 6 7
+        # value: 1 0 1 0 0 0 1 0 => binaryNumber
+
+        # К.с.м: 1 2 3 4 5 6 7 8
+        # value: 1 0 1 0 0 0 1 0 => binaryNumber
+
+        # nullNumberCount = binaryNumber[::2].count('0')
+        # oneNumberCount = binaryNumber[1::2].count('1')
 
         # Second Variant
 
-        # oneNumberCount = 0
-        # nullNumberCount = 0
-        # for i in range(len(binaryNumber)):
-        #     if ( i % 2 != 0 and binaryNumber[i] == '1'):
-        #         oneNumberCount += 1
-        #     if ( i % 2 == 0 and binaryNumber[i] == '0'):
-        #         nullNumberCount += 1
-
+        oneNumberCount = 0
+        nullNumberCount = 0
+        for i in range(len(binaryNumber)):
+            if ( i % 2 != 0 and binaryNumber[i] == '1'):
+                oneNumberCount += 1
+            if ( i % 2 == 0 and binaryNumber[i] == '0'):
+                nullNumberCount += 1
         modul = abs(oneNumberCount - nullNumberCount)
         if modul == limit:
             isComplete = False
@@ -52,5 +57,7 @@ def taskWithNewNumber(searchValue):
     return num
 
 
+# print(taskWithNewNumber(621))
+
+
 print(taskWithBinaryCode(5))
-print(taskWithNewNumber(621))
