@@ -8,29 +8,27 @@ def Task18491():
 
     # Создаем перестановки и определяем их как List
     # https://pythonworld.ru/moduli/modul-itertools.html
-    allCombinations = list(itertools.permutations(alph))
+    allCombinations = list(itertools.permutations(alph, 5))
 
     # Задаем дефолтное(стандартное) значение счетчика
     counter = 0
 
     # Создаем цикл, в котором пробегаемся по каждой комбинации
     for word in allCombinations:
-
         # Если первый символ слова это "Ь" то переходим к следующей итерации (следующему шагу) цикла
-        if word[0] == 'Ь':
-            continue
-        isOkay = True
+        if word[0] != 'Ь':
+            isOkay = True
 
-        # Создаем цикл, в котором пробегаемся по каждому символу слова
-        for i in range(len(word)):
+            # Создаем цикл, в котором пробегаемся по каждому символу слова
+            for i in range(len(word)):
 
-            # Проверка по условию,
-            # Проверка (len(word) - 1 != i) для того чтобы проверить не вылезли ли мы за размер Листа
-            if (word[i] == '0' or word[i] == 'А') and len(word) - 1 != i and word[i + 1] == 'Ь':
-                isOkay = False
-                break;
-        if isOkay:
-            counter += 1
+                # Проверка по условию,
+                # Проверка (len(word) - 1 != i) для того чтобы проверить не вылезли ли мы за размер Листа
+                if (word[i] == '0' or word[i] == 'А') and len(word) - 1 != i and word[i + 1] == 'Ь':
+                    isOkay = False
+                    break;
+            if isOkay:
+                counter += 1
     return counter
 
 
@@ -47,7 +45,8 @@ def Task3208():
                 for s4 in alph2:
                     for s5 in alph2:
                         counter += 1
-                        answer = s1 + s2 + s3 + s4 + s5
+                        answer = s1 + s2 + s3 + s4 + s5;
+                        print(answer)
                         if counter == 182:
                             return answer
 
