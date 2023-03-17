@@ -1,24 +1,11 @@
 
-# number
+def task12():
+    start = '1' * 81
+    while (start.find('1111') > -1) or (start.find('88888') > -1):
+        if start.find('1111') > -1:
+            start = start.replace('1111','888',1)
+        else:
+            start = start.replace('88888', '888', 1)
+    return start
 
-celoe = 123
-drobnoe = 123,456
-
-# string
-
-stroka = 'Dasha'
-
-# list - spisok
-
-arr = ['a',1, [1,2,3], 'bcd', celoe, stroka]
-print(arr, arr[0])
-
-# dictionary - slovar
-
-obj = {
-    'key': 'value',
-    1: 'as',
-    'cat': 'Vaska'
-}
-
-print(obj, obj[1])
+print(task12())
