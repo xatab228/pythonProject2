@@ -18,4 +18,4 @@ def task14():
 
 
 
-print(task14())
+print(f"sasd {task14()}")
