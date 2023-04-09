@@ -18,4 +18,19 @@ def task14():
 
 
 
-print(f"sasd {task14()}")
+# print(f"sasd {task14()}")
+
+# Работает только в том случае, если число представленно в 10 системе счисления
+def TenToSS(num, ss):
+    answer = '';
+    while num != 0:
+        answer += str(num % ss);
+        num = num // ss;
+    return answer[::-1]
+
+def Task33484():
+    summ = pow(343, 6) - pow(7, 10) + 47;
+    sumInSevenSS = TenToSS(summ, 7)
+    return sumInSevenSS.count('6')
+
+print(Task33484())
