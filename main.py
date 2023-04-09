@@ -5,9 +5,7 @@ def Task34539():
     Q = list(range(42, 102))
     A = []
     for x in range(0, 110):
-        # 22
-        #    False    True      True   True          False
-        if (not(not(x in A) and (x in P)) or (x in Q)) == False:
+        if not (not (not (x in A) and (x in P)) or (x in Q)):
             A.append(x)
     return A;
 
@@ -61,6 +59,15 @@ def Task19067():
             break
     return answer;
 
+def Task9653():
+    P = list(range(10, 29))
+    Q = list(range(13, 18))
+    A = list(range(1, 50))
+    for x in range(1, 50):
+        if not (((x in A) <= (x in P)) or (x in Q)):
+            A.remove(x)
+    return A;
+print(Task9653())
 # answer 41 - 22 + 1 = 20
 # print(Task34539())
 
