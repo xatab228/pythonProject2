@@ -1,6 +1,6 @@
 def getFile(fileName):
     file = open(f'files/{fileName}.txt')
-    arr = [];
+    arr = []
     for num in file:
         arr.append(int(num))
     return arr
@@ -8,16 +8,16 @@ def getFile(fileName):
 
 def Task40733():
     # Получаем привычный массив(лист) с числами из файла
-    numberArray = getFile('40733');
+    numberArray = getFile('40733')
 
     # Считаем количество четных элементов, а также их сумму и среднее значение
     allChetSumm = 0
-    countChetSumm = 0
+    countChet = 0
     for num in numberArray:
         if num % 2 == 0:
-            countChetSumm += 1
+            countChet += 1
             allChetSumm += num
-    srChetSum = allChetSumm / countChetSumm
+    srChetSum = allChetSumm / countChet
 
     # Приступаем к основному условию
     count = 0
@@ -29,7 +29,7 @@ def Task40733():
 
         # Находим сумму, а также вводим две переменные в которые записываем наши условия( деление на 3 , а также сумма меньше среднего знначения суммы элементов)
         summ = firstNumberOfPair + secondNumberOfPair
-        isDelOnThree = firstNumberOfPair % 3 == 0 or secondNumberOfPair % 3 == 0;
+        isDelOnThree = firstNumberOfPair % 3 == 0 or secondNumberOfPair % 3 == 0
         isLessThenSumm = firstNumberOfPair < srChetSum or secondNumberOfPair < srChetSum
 
         # Выполняем проверку, если все ок то в счетчик прибавляем единицу, а также не забываем про нахождение максимального элемента
