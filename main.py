@@ -15,12 +15,25 @@ def gameData(stones, stepsCount):
 
 
 def StoneTask():
-    game = gameData(64, 4);
+    defaultStonesCount = 2;
+    defaultStepsCount = 2;
+    game = gameData(defaultStonesCount, defaultStepsCount);
+
+    #ONLY PRINT
+    stepsCount = 1
     countSpace = 32
+    print('S' + int(countSpace + 6) * ' ' + str(defaultStonesCount))
     for step in game:
-        print(int(countSpace) * ' ' + str(step))
+        if stepsCount % 2 == 0:
+            name = 'Ваня'
+        else:
+            name = 'Петя'
+        print(name + int(countSpace) * ' ' + str(step))
         countSpace -= len(step) * 2
+        stepsCount += 1
 
 
-
+# 19 - 64
+# 20 - 32, 63
+# 21 - 62
 StoneTask()
