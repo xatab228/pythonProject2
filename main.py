@@ -1,44 +1,26 @@
-def getFile(fileName):
-    file = open(f'files/{fileName}.txt')
-    arr = []
-    for num in file:
-        arr.append(int(num))
-    return arr
+
+def gameData(stones, stepsCount):
+    stepsData = []
+    for step in range(stepsCount):
+        if step == 0:
+            stepsData.append([stones + 1, stones * 2])
+        else:
+            stepData = stepsData[step - 1]
+            newStep = []
+            for stoneIndex in range(len(stepData)):
+                newStep.append(stepData[stoneIndex] + 1)
+                newStep.append(stepData[stoneIndex] * 2)
+            stepsData.append(newStep)
+    return stepsData
 
 
-def Task40733():
-    # Получаем привычный массив(лист) с числами из файла
-    numberArray = getFile('40733')
+def StoneTask():
+    game = gameData(64, 4);
+    countSpace = 32
+    for step in game:
+        print(int(countSpace) * ' ' + str(step))
+        countSpace -= len(step) * 2
 
-    # Считаем количество четных элементов, а также их сумму и среднее значение
-    allChetSumm = 0
-    countChet = 0
-    for num in numberArray:
-        if num % 2 == 0:
-            countChet += 1
-            allChetSumm += num
-    srChetSum = allChetSumm / countChet
 
-    # Приступаем к основному условию
-    count = 0
-    maxSummOfPair = 0
 
-    for i in range(len(numberArray) - 1):
-        firstNumberOfPair = numberArray[i]
-        secondNumberOfPair = numberArray[i + 1]
-
-        # Находим сумму, а также вводим две переменные в которые записываем наши условия( деление на 3 , а также сумма меньше среднего знначения суммы элементов)
-        summ = firstNumberOfPair + secondNumberOfPair
-        isDelOnThree = firstNumberOfPair % 3 == 0 or secondNumberOfPair % 3 == 0
-        isLessThenSumm = firstNumberOfPair < srChetSum or secondNumberOfPair < srChetSum
-
-        # Выполняем проверку, если все ок то в счетчик прибавляем единицу, а также не забываем про нахождение максимального элемента
-        if isDelOnThree and isLessThenSumm:
-            count += 1
-            if summ > maxSummOfPair:
-                maxSummOfPair = summ
-
-    # Вывод массивом (*для удобства)
-    return [count, maxSummOfPair]
-
-print(Task40733())
+StoneTask()
