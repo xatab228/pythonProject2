@@ -20,6 +20,19 @@ def Task24_2():
             counter += 1
     print(counter)
 
+def Task24_3():
+    file = open('../files/24_3.txt')
+    string = file.readline()
+    lines = string.split('A')
+    counter = 0
+    for line in lines:
+        lensLines = len(line)
+        countB = line.count('B')
+        if lensLines >= 8 and countB == 0:
+            counter += 1
+    print(counter)
+
+
 
 # 1?493*41
 # 10^10 = 10 000 000 000
@@ -36,4 +49,6 @@ def Task25_1():
 
 # Task24_2()
 
-Task25_1()
+Task24_3()
+
+# Task25_1()
