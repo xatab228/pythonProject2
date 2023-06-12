@@ -1,54 +1,87 @@
 
-def Task24_1():
-    file = open('../files/24_1.txt')
-    string = file.readline()
-    temp = {}
-    for i in range(0, len(string) - 2):
-        if string[i] == string[i + 1]:
-            if temp.get(string[i + 2]) != None:
-                temp[string[i + 2]] += 1
-            else:
-                temp[string[i + 2]] = 0
-    print(temp, max(temp, key=temp.get))
+def Task26_1():
+    file = open('../files/26_1.txt')
+    string = file.readlines()
+    params = {}
+    values = []
+    for i in range(len(string)):
+        if i == 0:
+            temp = string[i].split(' ')
+            params = {
+                'max': int(temp[0]),
+                'count': int(temp[1])
+            }
+        else:
+            values.append(int(string[i]))
 
-def Task24_2():
-    file = open('../files/24_2.txt')
-    lines = file.readlines();
+    values = sorted(values)
+    print(values)
+    maxValueSumm = 0;
+    maxValue = 0;
     counter = 0
-    for line in lines:
-        if line.count('A') > line.count('E'):
+    for value in values:
+        if (maxValueSumm + int(value)) <= int(params['max']):
+            maxValueSumm += int(value)
+            maxValue = int(value)
             counter += 1
-    print(counter)
+    maxValueSumm -= maxValue
+    values = reversed(values)
+    counter -= 1
+    for value in values:
+        if (maxValueSumm + int(value)) <= int(params['max']):
+            maxValueSumm += int(value)
+            maxValue = int(value)
+            counter += 1
+    print(counter, maxValue, maxValueSumm)
 
-def Task24_3():
-    file = open('../files/24_3.txt')
-    string = file.readline()
-    lines = string.split('A')
+def Task26_2():
+    file = open('../files/26_2.txt')
+    string = file.readlines()
+    N = 0
+    values = []
+    for i in range(len(string)):
+        if i == 0:
+            N = string[i]
+        else:
+            values.append(int(string[i]))
+
     counter = 0
-    for line in lines:
-        lensLines = len(line)
-        countB = line.count('B')
-        if lensLines >= 8 and countB == 0:
-            counter += 1
-    print(counter)
+    maxSumm = 0
+    for i in range(len(values) - 1):
+        for j in range(i + 1, len(values)):
+            summ = values[i] + values[j]
+            if (summ in values) and (summ % 2 != 1):
+                counter += 1
+                if summ > maxSumm:
+                    maxSumm = summ
+
+    print(counter,maxSumm,values)
+
+def Task27_1():
+    file = open('../files/27_1_B.txt')
+    string = file.readlines()
+    N = 0
+    values = []
+    for i in range(len(string)):
+        if i == 0:
+            N = string[i]
+        else:
+            values.append(int(string[i]))
+
+    maxSumm = 0
+    firstNum = 0
+    secondNum = 0
+    for i in range(len(values) - 1):
+        for j in range(i + 1, len(values)):
+            summ = values[i] + values[j]
+            if (summ > maxSumm) and (summ % 120 == 0) and (values[i] > values[j]):
+                maxSumm = summ
+                firstNum = values[i]
+                secondNum = values[j]
+
+    print(firstNum,secondNum,values)
 
 
-
-# 1?493*41
-# 10^10 = 10 000 000 000
-# max = 19 493 999 41
-def Task25_1():
-    for x in range(1049341, 1949399941 + 1):
-        string = str(x)
-        if string[0] == '1' and string[2:5] == '493' and string[-2] == '4' and string[-1] == '1':
-            if int(string) % 2023 == 0:
-                print(string)
-
-
-# Task24_1()
-
-# Task24_2()
-
-Task24_3()
-
-# Task25_1()
+# Task26_1()
+# Task26_2()
+Task27_1()
